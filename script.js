@@ -1,95 +1,61 @@
-// Get DOM elements
-const balanceEl = document.getElementById('balance');
-const incomeAmountEl = document.getElementById('income-amount');
-const expenseAmountEl = document.getElementById('expense-amount');
-const transactionFormEl = document.getElementById('transaction-form');
-const descriptionEl = document.getElementById('description');
-const amountEl = document.getElementById('amount');
-const transactionListEl = document.getElementById('transaction-list');
+// Mobile menu toggle
+const hamburger = document.querySelector('.hamburger');
+const navLinks = document.querySelector('.nav-links');
 
-// Get transactions from localStorage or initialize empty array
-let transactions = JSON.parse(localStorage.getItem('transactions')) || [];
+hamburger.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+    hamburger.classList.toggle('active');
+});
 
-// Initialize the app
-function init() {
-    transactionListEl.innerHTML = '';
-    transactions.forEach(addTransactionToDOM);
-    updateValues();
-}
+// Smooth scrolling for navigation links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollTop = 0;
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth'
+        });
+    });
+});
 
-// Add transaction
-function addTransaction(e) {
+// Active link highlighting
+const sections = document.querySelectorAll('section');
+const navItems = document.querySelectorAll('.nav-links a');
+
+window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        if (scrollY >= sectionTop - 60) {
+            current = section.getAttribute('id');
+        }
+    });
+
+    navItems.forEach(item => {
+        item.classList.remove('active');
+        if (item.getAttribute('href').slice(1) === current) {
+            item.classList.add('active');
+        }
+    });
+});
+
+// Form submission
+const contactForm = document.getElementById('contactForm');
+
+contactForm.addEventListener('submit', (e) => {
     e.preventDefault();
-
-    const transaction = {
-        id: generateID(),
-        description: descriptionEl.value,
-        amount: +amountEl.value,
-        date: new Date().toISOString()
-    };
-
-    transactions.push(transaction);
-    addTransactionToDOM(transaction);
-    updateValues();
-    updateLocalStorage();
-
-    descriptionEl.value = '';
-    amountEl.value = '';
-}
-
-// Generate random ID
-function generateID() {
-    return Math.floor(Math.random() * 1000000);
-}
-
-// Add transaction to DOM
-function addTransactionToDOM(transaction) {
-    const sign = transaction.amount < 0 ? '-' : '+';
-    const item = document.createElement('li');
-    item.classList.add(transaction.amount < 0 ? 'expense' : 'income');
-
-    item.innerHTML = `
-        ${transaction.description}
-        <span>${sign}$${Math.abs(transaction.amount).toFixed(2)}</span>
-        <button class="delete-btn" onclick="removeTransaction(${transaction.id})">×</button>
-    `;
-
-    transactionListEl.appendChild(item);
-}
-
-// Update balance, income and expense values
-function updateValues() {
-    const amounts = transactions.map(transaction => transaction.amount);
     
-    const total = amounts.reduce((acc, amount) => acc + amount, 0).toFixed(2);
-    const income = amounts
-        .filter(amount => amount > 0)
-        .reduce((acc, amount) => acc + amount, 0)
-        .toFixed(2);
-    const expense = (amounts
-        .filter(amount => amount < 0)
-        .reduce((acc, amount) => acc + amount, 0) * -1)
-        .toFixed(2);
-
-    balanceEl.innerText = `$${total}`;
-    incomeAmountEl.innerText = `$${income}`;
-    expenseAmountEl.innerText = `$${expense}`;
-}
-
-// Remove transaction
-function removeTransaction(id) {
-    transactions = transactions.filter(transaction => transaction.id !== id);
-    updateLocalStorage();
-    init();
-}
-
-// Update localStorage
-function updateLocalStorage() {
-    localStorage.setItem('transactions', JSON.stringify(transactions));
-}
-
-// Event listeners
-transactionFormEl.addEventListener('submit', addTransaction);
-
-// Initialize app
-init();
+    // Get form data
+    const formData = new FormData(contactForm);
+    const data = Object.fromEntries(formData);
+    
+    // Here you would typically send the data to a server
+    console.log('Form submitted:', data);
+    
+    // Clear form
+    contactForm.reset();
+    
+    // Show success message
+    alert('Thank you for your message! We will get back to you soon.');
+});

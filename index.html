@@ -2,54 +2,251 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple Expense Tracker</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">    <title>PlantsWorld - Your Urban Jungle Store</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Expense Tracker</h1>
-        
-        <div class="balance-container">
-            <h2>Your Balance</h2>
-            <h1 id="balance">$0.00</h1>
-        </div>
-
-        <div class="summary-container">
-            <div class="income">
-                <h3>Income</h3>
-                <p id="income-amount">$0.00</p>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">PlantWorld</a>
+            <ul class="nav-links">                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#plants">Plants</a></li>
+                <li><a href="#shop">Shop</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="https://www.figma.com/design/aBV9ghMmANMIQQ503VM7j7/PlantsWorld?node-id=0-1&t=zaaEuFZwY81jqHLn-1" target="_blank">
+                    <i class="fab fa-figma"></i> Figma</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
             </div>
-            <div class="expenses">
-                <h3>Expenses</h3>
-                <p id="expense-amount">$0.00</p>
+        </div>
+    </nav>    
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Bring Nature Inside</h1>
+            <p>Transform your space with our carefully curated collection of indoor plants</p>
+            <button class="cta-button">Shop Now</button>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <div class="container">
+            <h2>About Us</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>PlantsWorld is your premier destination for beautiful indoor plants and expert plant care advice. We're passionate about helping you create your own urban jungle with healthy, sustainably sourced plants.</p>
+                    <ul class="about-features">
+                        <li><i class="fas fa-leaf"></i> Expert Plant Care Advice</li>
+                        <li><i class="fas fa-seedling"></i> Premium Quality Plants</li>
+                        <li><i class="fas fa-heart"></i> Plant Lover Community</li>
+                        <li><i class="fas fa-hand-holding-heart"></i> Sustainable Practices</li>
+                    </ul>
+                </div>
+                <div class="about-image">
+                    <img src="assets/succulents.png" alt="Modern house design">
+                </div>
             </div>
         </div>
+    </section>    
+    <section id="plants" class="services">
+        <div class="container">
+            <h2>Plant Categories</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <i class="fas fa-sun"></i>
+                    <h3>Low Light Plants</h3>
+                    <p>Perfect plants for spaces with minimal sunlight</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-tint"></i>
+                    <h3>Air Purifying</h3>
+                    <p>Natural air cleaners for your home</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-cat"></i>
+                    <h3>Pet Friendly</h3>
+                    <p>Safe and beautiful plants for pet owners</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-star"></i>
+                    <h3>Rare Plants</h3>
+                    <p>Unique and exotic plant varieties</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-        <div class="transaction-container">
-            <h3>Add New Transaction</h3>
-            <form id="transaction-form">
-                <div class="form-control">
-                    <label for="description">Description</label>
-                    <input type="text" id="description" placeholder="Enter description..." required>
+    <section id="shop" class="projects">
+        <div class="container">
+            <h2>Featured Plants</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <img src="assets/roses.jpeg" alt="Pink Rose">
+                    <div class="project-info">
+                        <h3>Pink Rose</h3>
+                        <p>Beautiful and fragrant</p>
+                        <span class="price">$25.99</span>
+                    </div>
                 </div>
-                <div class="form-control">
-                    <label for="amount">Amount</label>
-                    <input type="number" id="amount" placeholder="Enter amount..." required>
-                    <small>*Negative - expense, Positive - income</small>
+                <div class="project-card">
+                    <img src="assets/orchids.jpg" alt="Orchids">
+                    <div class="project-info">
+                        <h3>Orchids</h3>
+                        <p>Elegant and exotic</p>
+                        <span class="price">$39.99</span>
+                    </div>
                 </div>
-                <button class="btn">Add Transaction</button>
+                <div class="project-card">
+                    <img src="assets/cactus1.jpeg" alt="Cactus">
+                    <div class="project-info">
+                        <h3>Cactus Collection</h3>
+                        <p>Low maintenance and unique</p>
+                        <span class="price">$19.99</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery" class="gallery">
+        <div class="container">
+            <h2>Plant Gallery</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="assets/monstera.png" alt="Monstera Plant">
+                    <div class="gallery-overlay">
+                        <h3>Monstera</h3>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="assets/snake-plant.png" alt="Snake Plant">
+                    <div class="gallery-overlay">
+                        <h3>Snake Plant</h3>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="assets/fiddle-leaf.png" alt="Fiddle Leaf Fig">
+                    <div class="gallery-overlay">
+                        <h3>Fiddle Leaf Fig</h3>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="assets/succulents.png" alt="Succulents">
+                    <div class="gallery-overlay">
+                        <h3>Succulents</h3>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="assets/pothos.png" alt="Pothos Plant">
+                    <div class="gallery-overlay">
+                        <h3>Pothos</h3>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="assets/cactus.png" alt="Cactus Collection">
+                    <div class="gallery-overlay">
+                        <h3>Cactus</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Contact Us</h2>
+            <div class="contact-content">
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <input type="text" name="name" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" name="email" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea name="message" placeholder="Your Message" required></textarea>
+                        </div>
+                        <button type="submit" class="submit-button">Send Message</button>
+                    </form>
+                </div>
+                <div class="contact-info">
+                    <div class="info-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <p>123 Business Street, City, Country</p>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-phone"></i>
+                        <p>+1 234 567 890</p>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-envelope"></i>                        
+                        <p>yashdhadve.8@gmail.com</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="figma-section">
+        <div class="container">
+            <a href="https://www.figma.com/design/aBV9ghMmANMIQQ503VM7j7/PlantsWorld?node-id=0-1&t=zaaEuFZwY81jqHLn-1" 
+               target="_blank" 
+               class="figma-button">
+                <i class="fab fa-figma"></i> View Figma Design
+            </a>
+        </div>
+    </section>
+
+    <section class="newsletter">
+        <div class="container">
+            <h2>Join Our Plant Family</h2>
+            <p>Subscribe to receive plant care tips, special offers, and new plant alerts!</p>
+            <form class="newsletter-form">
+                <input type="email" placeholder="Enter your email" required>
+                <button type="submit">Subscribe</button>
             </form>
         </div>
+    </section>
 
-        <div class="history-container">
-            <h3>Transaction History</h3>
-            <ul id="transaction-list" class="transaction-list">
-                <!-- Transactions will be added here dynamically -->
-            </ul>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">                
+                <div class="footer-logo">
+                    <h3>PlantsWorld</h3>
+                    <p>Your Urban Jungle Store</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>                        
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#plants">Plant Care</a></li>
+                        <li><a href="#shop">Shop</a></li>
+                        <li><a href="#gallery">Gallery</a></li>
+                    </ul>
+                </div>
+                <div class="footer-social">
+                    <h4>Follow Us</h4>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>            <div class="footer-bottom">
+                <p>&copy; 2025 Yash. All rights reserved.</p>
+            </div>
         </div>
-    </div>
+    </footer>
+
     <script src="script.js"></script>
 </body>
 </html>
